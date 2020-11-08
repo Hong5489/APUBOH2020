@@ -20,7 +20,7 @@ int main(int argc, char const *argv[])
   char cVar1;
   char *input;
   char *str1 = "Tranqulat3d";
-  char *str2 = "\x00\x00\x00\x00\x00 0 0P ";
+  char *str2 = "\x02\x03\x02\x03\x05\x02\x00\x00\x00\x00\x00";
   
   if (argc == 2) {
 
