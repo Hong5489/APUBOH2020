@@ -13,7 +13,7 @@ No, aaaaaaaaaaaaa is not correct. Have a sip of coffee
 
 Open it in Ghidra to decompile it:
 
-**main function code:**c
+**main function code:**
 ```c
 int main(int argc, char const *argv[])
 {
