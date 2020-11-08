@@ -68,7 +68,7 @@ int check_pw(char* input,char* str1,char* str2)
 ```
 The check_pw function add the two strings together and compare it with the argument (input)
 
-Therefore, we add the two strings together to get the password!
+Therefore, we **add the two strings together to get the password!**
 
 I used Python to calculate this for me:
 ```py
