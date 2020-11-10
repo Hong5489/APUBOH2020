@@ -3,6 +3,7 @@
 We're given a ELF file: [Codex_II](./Codex_II)
 
 Test run it:
+
 ```
 ./Codex_II 
 Need exactly one argument.
@@ -11,7 +12,9 @@ Need exactly one argument.
 No, aaaaaaaaa is not correct.
 
 ```
+
 Looks like it require a password, try `strings` command found some string:
+
 ```
 ...
 Need exactly one argument.
@@ -19,6 +22,7 @@ No, %s is not correct.
 Yes, %s is correct! The password is the flag: Format is apuboh{...}
 ...
 ```
+
 Therefore the password is also the flag for this challenge!
 
 Lets decompile it with ghidra
@@ -26,6 +30,7 @@ Lets decompile it with ghidra
 *Note: I modify the code the make it more readable, orginal source: [source.c](source.c)*
 
 **main function:**
+
 ```c
 int main(int argc, char const *argv[])
 {
@@ -49,9 +54,11 @@ int main(int argc, char const *argv[])
   }
 }
 ```
+
 From the code above, we know that the argument we pass in must be **11 characters**, and passed in `check_pw` function
 
 **check_pw function:**
+
 ```c
 int check_pw(char* input,char* str1,char* str2)
 
@@ -66,11 +73,13 @@ int check_pw(char* input,char* str1,char* str2)
   return 1;
 }
 ```
+
 The check_pw function add the two strings together and compare it with the argument (input)
 
 Therefore, we **add the two strings together to get the password!**
 
 I used Python to calculate this for me:
+
 ```py
 #!/usr/bin/env python3
 str1 = b"MindBlown%"
@@ -80,7 +89,9 @@ for i in zip(str1,str2):
 	print(chr(i[0] + i[1]),end='')
 # PnphCsrxn%
 ```
+
 Alternatively, solve in C language:
+
 ```c
 #include <stdio.h>
 int main(int argc, char const *argv[])
@@ -95,13 +106,16 @@ int main(int argc, char const *argv[])
 }
 // PnphCsrxn%
 ```
+
 Verify the password with the program, and its correct!
+
 ```
 ./Codex_II PnphCsrxn%
 Yes, PnphCsrxn% is correct! The password is the flag: Format is apuboh{...}
 ```
 
 ## Flag
+
 ```
 apuboh{PnphCsrxn%}
 ```
